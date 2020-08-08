@@ -1,5 +1,6 @@
 package com.bahngFamily.jihoon.springboot.domain.posts;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,5 +31,10 @@ public class Posts {
     this.title = title;
     this.content = content;
     this.author = author;
+  }
+
+  public void update(String title, String content){
+    this.title = title;
+    this.content = content;
   }
 }

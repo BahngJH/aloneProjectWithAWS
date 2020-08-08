@@ -6,6 +6,7 @@ import org.junit.Test;
 //여기 테스트 부분 에러 났었는데 문제 원인은 저자가 집필 당시엔 그래들4였고 그 버전대로 하다보니
 //그래들5인 나같은 사람들은 오류가 발생 서치해보니 그래들을 다운드레이드 해야했음.
 //cd D:\gitFolder\com.bahngFamily.jihoon => git bash here로 gradlew wrapper --gradle-version 4.10.2 명령어 입력
+//윈도우는 gradlew wrapper --gradle-version 4.10.2 이것만 맨 아래 터미널에서 사용하면 됨
 public class HelloResponseDtoTest {
 
   @Test
