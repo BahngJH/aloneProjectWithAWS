@@ -1,5 +1,6 @@
 package com.bahngFamily.jihoon.springboot.domain.posts;
 
+import com.bahngFamily.jihoon.springboot.domain.BaseTimeEntity;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor //기본 생성자 자동추가
 @Entity //테이블과 링크될 클래스임을 명시(필수), 카멜케이스로 이름을 언더스코어 네이밍으로 이름을 매칭함
-public class Posts {
+public class Posts extends BaseTimeEntity {
   @Id   //PK 지정
   @GeneratedValue(strategy = GenerationType.IDENTITY) //PK의 생성규칙을 지정, 부트 2.0부턴 GenerationType.IDENTITY이 있어야 auto_increment가 됨
   private Long id;

@@ -2,6 +2,9 @@ server:
   port: 8081
 
 spring:
+  h2:
+    console:
+      enabled: true
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
