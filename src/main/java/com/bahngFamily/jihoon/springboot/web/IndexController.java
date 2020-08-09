@@ -1,8 +1,10 @@
 package com.bahngFamily.jihoon.springboot.web;
 
+import com.bahngFamily.jihoon.springboot.config.auth.dto.SessionUser;
 import com.bahngFamily.jihoon.springboot.service.posts.PostsService;
 import com.bahngFamily.jihoon.springboot.web.dto.PostsResponseDto;
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +16,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class IndexController {
 
   private final PostsService postsService;
+  private final HttpSession httpSession;
 
   //머스테치 스타터 덕분에 컨트롤러에서 문자열을 반환할 때 프리픽스, 서픽스가 자동으로 지정됨
   // main/java/resources/template에서 반환되는 문자열과 일치하는 머스테치 파일을 ViewResolver가 처리
   @GetMapping("/")
   public String index(Model model){
     model.addAttribute("posts", postsService.findAllDesc());
+    SessionUser user = (SessionUser) httpSession.getAttribute("user");
+    if(user != null)
+      model.addAttribute("userName", user.getName());
     return "index";
   }
 
