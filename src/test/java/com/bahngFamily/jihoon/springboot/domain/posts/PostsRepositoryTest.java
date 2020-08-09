@@ -33,7 +33,7 @@ public class PostsRepositoryTest {
     //when
     List<Posts> postsList = postsRepository.findAll();
 
-    //thne
+    //then
     Posts posts = postsList.get(0);
     assertThat(posts.getTitle()).isEqualTo(title);
     assertThat(posts.getContent()).isEqualTo(content);

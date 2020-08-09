@@ -1,7 +1,6 @@
 package com.bahngFamily.jihoon.springboot.domain.posts;
 
 import com.bahngFamily.jihoon.springboot.domain.BaseTimeEntity;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

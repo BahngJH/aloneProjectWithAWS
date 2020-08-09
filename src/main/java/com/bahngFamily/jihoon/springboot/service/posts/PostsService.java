@@ -2,10 +2,13 @@ package com.bahngFamily.jihoon.springboot.service.posts;
 
 import com.bahngFamily.jihoon.springboot.domain.posts.Posts;
 import com.bahngFamily.jihoon.springboot.domain.posts.PostsRepository;
+import com.bahngFamily.jihoon.springboot.web.dto.PostsListResponseDto;
 import com.bahngFamily.jihoon.springboot.web.dto.PostsResponseDto;
 import com.bahngFamily.jihoon.springboot.web.dto.PostsSaveRequestDto;
 import com.bahngFamily.jihoon.springboot.web.dto.PostsUpdateRequestDto;
-import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +37,12 @@ public class PostsService {
   public PostsResponseDto findById(Long id){
     Posts entity = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. id = "+id));
     return new PostsResponseDto(entity);
+  }
+
+  @Transactional(readOnly = true)
+  public List<PostsListResponseDto> findAllDesc() {
+    return postsRepository.findAllDesc().stream()
+            .map(PostsListResponseDto::new)         //.map(posts -> new PostsListResponseDto(posts)) 와 같다
+            .collect(Collectors.toList());
   }
 }
