@@ -6,10 +6,19 @@
 <!-- 자바스크립트, css, 이미지 등 정적 파일들은 URL에서 /로 설정됨 -->
 
 <!-- index.js 추가 -->
-<!-- <script src="../../static/js/app/index.js"></script> -->
+<!--<script src="src/main/resources/static/js/app/index.js"></script>-->
+
 <script>
   $('#btn-save').on('click', function() {
         save();
+    });
+
+  $('#btn-update').on('click', function() {
+        update();
+    });
+
+  $('#btn-delete').on('click', function() {
+        delete2();
     });
 
   function save() {
@@ -31,7 +40,44 @@
       }).fail(function(error){
         alert(JSON.stringify(error));
       });
-  }
+  };
+
+  function update(){
+      var data = {
+        title: $('#title').val(),
+        content: $('#content').val()
+      };
+
+      var id = $('#id').val();
+      $.ajax({
+        type:"PUT",
+        url: '/api/v1/posts/'+id,
+        dataType : 'json',
+        contentType : 'application/json; charset=utf-8',
+        data : JSON.stringify(data),
+      }).done(function(){
+        alert("글이 수정되었습니다.");
+        window.location.href="/";
+      }).fail(function(error){
+        alert(JSON.stringify(error));
+      });
+  };
+
+  function delete2(){
+    var id = $('#id').val();
+
+    $.ajax({
+      type:'DELETE',
+      url: '/api/v1/posts/'+id,
+      dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
+    }).done(function(){
+      alert('게시글이 삭제되었습니다.');
+      window.location.href = '/';
+    }).fail(function(error){
+      alert(JSON.stringify(error));
+    });
+  };
 </script>
 
 </body>
