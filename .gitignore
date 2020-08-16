@@ -6,5 +6,3 @@
 
 /src/main/resources/application-oauth.properties
 
-build/
-src/test/resources/

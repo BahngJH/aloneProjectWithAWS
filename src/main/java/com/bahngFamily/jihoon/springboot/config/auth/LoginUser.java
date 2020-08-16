@@ -11,4 +11,9 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface LoginUser {
   //@interface : 이 파일을 어노테이션 클래스로 지정합니다. LoginUser라는 이름을 가진 어노테이션이 생성되었다고 보면됨
+
+
+  //그리고 같은 위치에 LoginUserArgumentResolver를 생성합니다. HandlerMethodArgumentResolver 인터페이스를 구현한 클래스죠.
+  //HandlerMethodArgumentResolver는 한 가지 기능을 지원합니다. 조건에 맞는 경우 메소드가 있다면 HandlerMethodArgumentResolver의 구현체가 지정한 값으로
+  //해당 메소드의 파라미터로 넘길 수 있습니다.
 }
