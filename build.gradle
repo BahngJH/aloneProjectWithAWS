@@ -41,5 +41,6 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-oauth2-client') //소셜로그인 등 클라이언트에서 필요한 의존성
     compile('org.springframework.session:spring-session-jdbc')          //DB에 세션정보 담기 위한 의존성 추가
     compile('org.springframework.security:spring-security-test')
+    compile('org.mariaDB.jdbc:mariadb-java-client')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
